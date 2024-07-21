@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:techjar_task/features/presentation/bloc/fetching_posts_bloc/posts_bloc.dart';
+import 'package:techjar_task/features/presentation/bloc/fetching_posts_bloc/posts_event.dart';
 import 'package:techjar_task/features/presentation/pages/home_page/home_page.dart';
 
 class SplashPage extends StatefulWidget {
@@ -21,6 +24,7 @@ class _SplashPageState extends State<SplashPage> with TickerProviderStateMixin {
     _controller.forward();
     _controller.repeat();
     super.initState();
+    BlocProvider.of<PostBloc>(context).add(FetchPosts());
   }
 
   @override
