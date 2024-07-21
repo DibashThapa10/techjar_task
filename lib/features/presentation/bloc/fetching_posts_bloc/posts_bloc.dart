@@ -13,7 +13,13 @@ class PostBloc extends Bloc<PostEvent, PostState> {
         final posts = await postRepository.fetchPosts();
         emit(PostLoaded(posts: posts));
       } catch (e) {
-        emit(PostError(error: e.toString()));
+        try {
+          final cachedPosts = await postRepository.getCachedPosts();
+          emit(PostLoaded(posts: cachedPosts));
+        } catch (e) {
+          emit(PostError(error: 'Failed to fetch posts: $e'));
+        }
+        
       }
     });
   }
