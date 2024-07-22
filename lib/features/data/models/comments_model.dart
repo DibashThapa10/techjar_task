@@ -8,7 +8,9 @@ class CommentsModel {
   CommentsModel({this.postId, this.id, this.name, this.email, this.body});
 
   CommentsModel.fromJson(Map<String, dynamic> json) {
-    postId = json['postId'];
+    postId = json['postId'] is int
+        ? json['postId']
+        : int.parse(json['postId'].toString());
     id = json['id'];
     name = json['name'];
     email = json['email'];

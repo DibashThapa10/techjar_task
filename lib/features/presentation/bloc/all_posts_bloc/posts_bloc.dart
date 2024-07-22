@@ -1,7 +1,7 @@
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:techjar_task/features/data/repo/posts_repository.dart';
-import 'package:techjar_task/features/presentation/bloc/fetching_posts_bloc/posts_event.dart';
-import 'package:techjar_task/features/presentation/bloc/fetching_posts_bloc/posts_state.dart';
+import 'package:techjar_task/features/presentation/bloc/all_posts_bloc/posts_event.dart';
+import 'package:techjar_task/features/presentation/bloc/all_posts_bloc/posts_state.dart';
 
 class PostBloc extends Bloc<PostEvent, PostState> {
   final PostRepository postRepository;

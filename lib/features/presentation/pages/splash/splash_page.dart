@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:techjar_task/features/presentation/bloc/fetching_posts_bloc/posts_bloc.dart';
-import 'package:techjar_task/features/presentation/bloc/fetching_posts_bloc/posts_event.dart';
+import 'package:techjar_task/features/presentation/bloc/all_posts_bloc/posts_bloc.dart';
+import 'package:techjar_task/features/presentation/bloc/all_posts_bloc/posts_event.dart';
 import 'package:techjar_task/features/presentation/pages/home_page/home_page.dart';
 
 class SplashPage extends StatefulWidget {
