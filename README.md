@@ -4,8 +4,8 @@ A Flutter posts app that uses the BloC state management library to view posts an
 
 # Features
 
-• See the posts available on the server.
-• View the posts details with list of comments.
+• See the posts available on the server./n
+• View the posts details with list of comments./n
 • Add new comment.
 
 # Dependencies
