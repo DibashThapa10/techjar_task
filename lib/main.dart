@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:techjar_task/features/data/repo/comments_repository.dart';
 import 'package:techjar_task/features/data/repo/posts_repository.dart';
 import 'package:techjar_task/features/presentation/bloc/all_posts_bloc/posts_bloc.dart';
+import 'package:techjar_task/features/presentation/bloc/comment_bloc/comment_bloc.dart';
 
 import 'package:techjar_task/features/presentation/pages/splash/splash_page.dart';
 
@@ -18,7 +20,10 @@ class MyApp extends StatelessWidget {
         providers: [
           BlocProvider<PostBloc>(
               create: (BuildContext context) =>
-                  PostBloc(postRepository: PostRepository()))
+                  PostBloc(postRepository: PostRepository())),
+          BlocProvider<CommentBloc>(
+              create: (BuildContext context) =>
+                  CommentBloc(commentRepository: CommentRepository()))
         ],
         child: MaterialApp(
             title: 'Tech Jar Task',

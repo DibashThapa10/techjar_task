@@ -34,7 +34,7 @@ class CommentBloc extends Bloc<CommentEvent, CommentState> {
 
         final comments = await commentRepository.fetchComments(event.postId);
         // comments.add(newComment);
-        emit(CommentAdded());
+        // emit(CommentAdded());
 
         emit(CommentLoaded(comments: comments));
       } catch (e) {

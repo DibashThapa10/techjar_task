@@ -14,20 +14,20 @@ class CommentRepository {
     final Map<String, dynamic> allComments = json.decode(cachedComments);
     final List<dynamic> commentsForPost = allComments[postId.toString()] ?? [];
 
-    // If comments are cached and not empty, return them
+   
     if (commentsForPost.isNotEmpty) {
       return commentsForPost
           .map((comment) => CommentsModel.fromJson(comment))
           .toList();
     } else {
-      // Fetch from API if cache is empty
+      
       final response = await _dio.get('${API.baseUrl}/posts/$postId/comments');
       if (response.statusCode == 200) {
         final comments = (response.data as List)
             .map((comment) => CommentsModel.fromJson(comment))
             .toList();
 
-        // Update cache with the fetched comments
+       
         final Map<String, dynamic> updatedComments = {...allComments};
         updatedComments[postId.toString()] =
             comments.map((comment) => comment.toJson()).toList();
@@ -39,37 +39,7 @@ class CommentRepository {
       }
     }
   }
-  // Future<List<CommentsModel>> fetchComments(int postId) async {
-  //   final SharedPreferences prefs = await SharedPreferences.getInstance();
-  //   final String cachedComments = prefs.getString('cachedComments') ?? '{}';
-  //   final Map<String, dynamic> allComments = json.decode(cachedComments);
-  //   final List<dynamic> commentsForPost = allComments[postId.toString()] ?? [];
-  //   if (commentsForPost.isNotEmpty) {
-  //     return commentsForPost
-  //         .map((comment) => CommentsModel.fromJson(comment))
-  //         .toList();
-  //   } else {
-  //     final response = await _dio.get('${API.baseUrl}/posts/$postId/comments');
-  //     if (response.statusCode == 200) {
-  //       final comments = (response.data as List)
-  //           .map((comment) => CommentsModel.fromJson(comment))
-  //           .toList();
-
-  //       // Update cache
-  //       final SharedPreferences prefs = await SharedPreferences.getInstance();
-  //       final cachedComments = prefs.getString('cachedComments') ?? '{}';
-  //       final Map<String, dynamic> allComments = json.decode(cachedComments);
-  //       allComments[postId.toString()] =
-  //           comments.map((comment) => comment.toJson()).toList();
-  //       prefs.setString('cachedComments', json.encode(allComments));
-
-  //       return comments;
-  //     } else {
-  //       throw Exception('Error fetching comments: ${response.data}');
-  //     }
-  //   }
-  // }
-
+  
   Future<List<CommentsModel>> getCachedComments(int postId) async {
     final SharedPreferences prefs = await SharedPreferences.getInstance();
     final String? cachedComments = prefs.getString('cachedComments');
@@ -85,36 +55,6 @@ class CommentRepository {
   }
 
   //posting new comment
-
-  // Future<CommentsModel> addComment(
-  //     int postId, String name, String email, String body) async {
-  //   final response = await _dio.post(
-  //     '${API.baseUrl}/posts/$postId/comments',
-  //     data: {
-  //       'postId': postId,
-  //       'name': name,
-  //       'email': email,
-  //       'body': body,
-  //     },
-  //   );
-  //   if (response.statusCode == 201) {
-  //     final newComment = CommentsModel.fromJson(response.data);
-
-  //     // Update cache
-  //     final SharedPreferences prefs = await SharedPreferences.getInstance();
-  //     final cachedComments = prefs.getString('cachedComments') ?? '{}';
-  //     final Map<String, dynamic> allComments = json.decode(cachedComments);
-  //     final List<dynamic> commentsForPost =
-  //         allComments[postId.toString()] ?? [];
-  //     commentsForPost.add(response.data);
-  //     allComments[postId.toString()] = commentsForPost;
-  //     prefs.setString('cachedComments', json.encode(allComments));
-
-  //     return newComment;
-  //   } else {
-  //     throw Exception('Error adding comment: ${response.data}');
-  //   }
-  // }
   Future<CommentsModel> addComment(
       int postId, String name, String email, String body) async {
     final response = await _dio.post(

@@ -17,6 +17,7 @@ class CommentPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Comments'),
+        backgroundColor: Colors.teal,
       ),
       body: BlocProvider(
         create: (context) => CommentBloc(commentRepository: CommentRepository())
@@ -25,15 +26,6 @@ class CommentPage extends StatelessWidget {
           builder: (context, state) {
             if (state is CommentLoading) {
               return const Center(child: CircularProgressIndicator());
-            } else if (state is CommentAdded) {
-              // Show success message and navigate back
-              ScaffoldMessenger.of(context).showSnackBar(
-                const SnackBar(
-                  content: Text('Comment added successfully'),
-                  duration: Duration(seconds: 10),
-                ),
-              );
-              // Navigator.pop(context); // Navigate back to the previous page (home page)
             } else if (state is CommentLoaded) {
               return Column(
                 children: [
@@ -98,6 +90,9 @@ class CommentPage extends StatelessWidget {
           },
         ),
       ),
+      
     );
   }
+
+  
 }
