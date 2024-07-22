@@ -81,7 +81,7 @@ class CommentPage extends StatelessWidget {
                                   Text(
                                     '@${comment.email}',
                                     style: const TextStyle(
-                                        color: Colors.grey, fontSize: 14),
+                                        color: Colors.blue, fontSize: 14),
                                   ),
                                   const Divider()
                                 ],
