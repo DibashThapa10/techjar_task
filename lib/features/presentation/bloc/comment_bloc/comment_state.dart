@@ -18,7 +18,6 @@ class CommentLoaded extends CommentState {
   @override
   List<Object> get props => [comments];
 }
-class CommentAdded extends CommentState {}
 
 class CommentError extends CommentState {
   final String error;

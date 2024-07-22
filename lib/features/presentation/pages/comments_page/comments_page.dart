@@ -18,6 +18,14 @@ class CommentPage extends StatelessWidget {
       appBar: AppBar(
         title: const Text('Comments'),
         backgroundColor: Colors.teal,
+        actions: [
+          IconButton(
+            onPressed: () {},
+            icon: const Icon(
+              Icons.chat_outlined,
+            ),
+          )
+        ],
       ),
       body: BlocProvider(
         create: (context) => CommentBloc(commentRepository: CommentRepository())
@@ -30,13 +38,53 @@ class CommentPage extends StatelessWidget {
               return Column(
                 children: [
                   Expanded(
-                    child: ListView.builder(
+                    child: ListView.separated(
+                      padding: const EdgeInsets.only(
+                        left: 10,
+                        right: 10,
+                        bottom: 60,
+                        top: 20,
+                      ),
                       itemCount: state.comments.length,
+                      separatorBuilder: (_, __) => const SizedBox(height: 10),
                       itemBuilder: (context, index) {
                         final comment = state.comments[index];
-                        return ListTile(
-                          title: Text(comment.name!),
-                          subtitle: Text(comment.body!),
+                        return Material(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          elevation: 2,
+                          child: Padding(
+                            padding: const EdgeInsets.symmetric(
+                                horizontal: 5, vertical: 15),
+                            child: ListTile(
+                              title: Column(
+                                children: [
+                                  Row(
+                                    children: [
+                                      Text(
+                                        '${index + 1}. ',
+                                        style: const TextStyle(
+                                            fontSize: 18, color: Colors.teal),
+                                      ),
+                                      Expanded(
+                                        child: Text(
+                                          comment.name!,
+                                          textAlign: TextAlign.center,
+                                          style: const TextStyle(
+                                              fontSize: 18,
+                                              fontWeight: FontWeight.bold),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                  const Divider()
+                                ],
+                              ),
+                              subtitle: Text(
+                                comment.body!,
+                              ),
+                            ),
+                          ),
                         );
                       },
                     ),
@@ -47,18 +95,70 @@ class CommentPage extends StatelessWidget {
                       children: [
                         TextField(
                           controller: nameController,
-                          decoration: const InputDecoration(labelText: 'Name'),
+                          decoration: InputDecoration(
+                            labelText: 'Name',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                              borderSide: const BorderSide(
+                                  color: Colors.teal, width: 2.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                              borderSide: const BorderSide(
+                                  color: Colors.grey, width: 2.0),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 5,
                         ),
                         TextField(
                           controller: emailController,
-                          decoration: const InputDecoration(labelText: 'Email'),
+                          decoration: InputDecoration(
+                            labelText: 'Email',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                              borderSide: const BorderSide(
+                                  color: Colors.teal, width: 2.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                              borderSide: const BorderSide(
+                                  color: Colors.grey, width: 2.0),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 5,
                         ),
                         TextField(
                           controller: bodyController,
-                          decoration:
-                              const InputDecoration(labelText: 'Comment'),
+                          decoration: InputDecoration(
+                            labelText: 'Comment',
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                              borderSide: const BorderSide(
+                                  color: Colors.teal, width: 2.0),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(30.0),
+                              borderSide: const BorderSide(
+                                  color: Colors.grey, width: 2.0),
+                            ),
+                          ),
                         ),
                         ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              backgroundColor: Colors.teal),
                           onPressed: () {
                             final String name = nameController.text;
                             final String email = emailController.text;
@@ -73,10 +173,12 @@ class CommentPage extends StatelessWidget {
                                     email: email,
                                     body: body,
                                   ));
-                              // Navigator.pop(context);
                             }
                           },
-                          child: const Text('Add Comment'),
+                          child: const Text(
+                            'Add Comment',
+                            style: TextStyle(color: Colors.white),
+                          ),
                         ),
                       ],
                     ),
@@ -90,9 +192,6 @@ class CommentPage extends StatelessWidget {
           },
         ),
       ),
-      
     );
   }
-
-  
 }

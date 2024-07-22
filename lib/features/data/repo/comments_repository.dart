@@ -64,6 +64,7 @@ class CommentRepository {
         'name': name,
         'email': email,
         'body': body,
+        'userId': 1
       },
     );
 

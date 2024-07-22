@@ -13,13 +13,9 @@ class CommentBloc extends Bloc<CommentEvent, CommentState> {
         final comments = await commentRepository.fetchComments(event.postId);
         emit(CommentLoaded(comments: comments));
       } catch (e) {
-        // try {
-        //   final cachedComments =
-        //       await commentRepository.getCachedComments(event.postId);
-        //   emit(CommentLoaded(comments: cachedComments));
-        // } catch (e) {
+      
         emit(CommentError(error: 'Failed to fetch comments: $e'));
-        // }
+       
       }
     });
     on<AddComment>((event, emit) async {
@@ -33,8 +29,7 @@ class CommentBloc extends Bloc<CommentEvent, CommentState> {
         );
 
         final comments = await commentRepository.fetchComments(event.postId);
-        // comments.add(newComment);
-        // emit(CommentAdded());
+       
 
         emit(CommentLoaded(comments: comments));
       } catch (e) {
