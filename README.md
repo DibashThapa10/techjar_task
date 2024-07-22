@@ -1,6 +1,6 @@
-# Posts App
+# Post App
 
-A Flutter posts app that uses the BloC state management library to view posts and its details with list of comments.
+A Flutter post app that uses the BloC state management library to view posts and its details with list of comments.
 
 # Features
 
@@ -18,7 +18,7 @@ This app depends on the following packages:
 
 This app uses the API to fetch posts and posts details from https://jsonplaceholder.typicode.com/
 
-Some screenshot of a Posts App.
+Some screenshot of a Post App.
 
 ![Screenshot_1721670065](https://github.com/user-attachments/assets/c203b9b0-ac91-4de0-b8e3-5e0c60ab5c2b)
 
