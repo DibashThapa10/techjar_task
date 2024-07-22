@@ -1,16 +1,23 @@
-# techjar_task
+# Posts App
 
-A new Flutter project.
+A Flutter posts app that uses the BloC state management library to view posts and its details.
 
-## Getting Started
+# Features
 
-This project is a starting point for a Flutter application.
+• See the posts available on the server.
+• View the posts details with list of comments.
+• Add new comment.
 
-A few resources to get you started if this is your first Flutter project:
+# Dependencies
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+This app depends on the following packages:
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+• flutter_bloc: ^8.1.6 • dio: ^5.5.0+1 • equatable: ^2.0.5 • bloc: ^8.1.4 • shared_preferences: ^2.2.3
+
+# API
+
+This app uses the API to fetch posts and posts details from https://jsonplaceholder.typicode.com/
+
+Some screenshot of a Posts App.
+
+
