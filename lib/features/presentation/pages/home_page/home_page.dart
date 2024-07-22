@@ -58,6 +58,7 @@ class HomePage extends StatelessWidget {
                                 fontSize: 18, color: Colors.teal),
                           ),
                           title: Text(post.title!),
+                         
                           iconColor: Colors.teal,
                           trailing:
                               const Icon(Icons.keyboard_arrow_right_outlined),

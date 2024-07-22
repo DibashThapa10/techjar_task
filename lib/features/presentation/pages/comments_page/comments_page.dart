@@ -58,6 +58,7 @@ class CommentPage extends StatelessWidget {
                                 horizontal: 5, vertical: 15),
                             child: ListTile(
                               title: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
                                 children: [
                                   Row(
                                     children: [
@@ -76,6 +77,11 @@ class CommentPage extends StatelessWidget {
                                         ),
                                       ),
                                     ],
+                                  ),
+                                  Text(
+                                    '@${comment.email}',
+                                    style: const TextStyle(
+                                        color: Colors.grey, fontSize: 14),
                                   ),
                                   const Divider()
                                 ],
